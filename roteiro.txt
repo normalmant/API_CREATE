@@ -1,0 +1,12 @@
+AULAS
+
+
+post "/aulas";
+
+get para cada dia da semana:
+
+get "/segunda"
+get "/terça"
+get "/quarta"
+get "/quinta"
+...
