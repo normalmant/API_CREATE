@@ -141,16 +141,16 @@ app.delete("/aulas/:id",(req,res)=>{
 
 
     try{
-        const bd=JSON.parse(fs.readFileSync("bd.json","utf8"))
+        const bd=JSON.parse(fs.readFileSync("aulas.json","utf8"))
 
         const indiceAula=bd.findIndex((aula)=>aula.id==id)
         if(indiceAula==-1){
             return res.status(404).json({erro: "Cliente não existe no Banco de Dados"})
         }
 
-        aulas.splice(indiceAula,1)
+        bd.splice(indiceAula,1)
 
-        fs.writeFileSync("bd.json",JSON.stringify(bd),"utf8")
+        fs.writeFileSync("aulas.json",JSON.stringify(bd),"utf8")
         res.status(200).json({resposta:"Cliente apagado"})
     }catch(erro){
         res.status(500).json({erro:erro.message})
