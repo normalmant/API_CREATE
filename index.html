@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horários Kennedy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header></header>
+    <main>
+        <table>
+            <thead>
+                <th>Horário / Dia</th>
+                <th>Segunda-feira</th>
+                <th>Terça-feira</th>
+                <th>Quarta-feira</th>
+                <th>Quinta-feira</th>
+                <th>Sexta-feira</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <ul>
+                            
+                            <li>7h20</li>
+                            <li>8h10</li>
+                            <li>9h00</li>
+                            <li>10h05</li>
+                            <li>10h55</li>
+                            <li>11h45</li>
+                            
+                        </ul>
+                
+                    </td>
+            
+                    <td class="aulas" id = "segunda"> </td>
+                    <td class="aulas" id = "terça"> </td>
+                    <td class="aulas" id = "quarta"> </td>
+                    <td class="aulas" id = "quinta"> </td>
+                    <td class="aulas" id = "sexta"> </td>
+                
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <button onclick="carregar_horario('segunda')">Carregar</button> </td>
+                    <td> <button onclick="carregar_horario('terça')">Carregar</button> </td>
+                    <td> <button onclick="carregar_horario('quarta')">Carregar</button> </td>
+                    <td> <button onclick="carregar_horario('quinta')">Carregar</button> </td>
+                    <td> <button onclick="carregar_horario('sexta')">Carregar</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer></footer>   
+
+    <script>
+
+        async function carregar_horario(dia){
+            
+            const coluna_dia = document.getElementById(dia)
+            try {
+                const link = "http://localhost:3000/aulas/" + dia
+                const consulta_api = await fetch(link)
+                if(consulta_api.ok) {
+                    const aulas_dia = await consulta_api.json()
+                    if (aulas_dia.resposta.length == 0){
+                        coluna_dia.innerHTML = "Nenhuma aula cadastrada!"
+                    } else {
+                        console.log(aulas_dia)
+                       let html="<ul>"
+                        aulas_dia.resposta.forEach((aula) => {
+                            html += "<li>" + aula.materia + "</li>"
+                        })
+                        coluna_dia.innerHTML += html
+                    }
+                }
+            } catch (erro) {
+                alert(erro)
+                coluna_dia.innerHTML = "Erro ao carregar horários!"
+            }
+        }
+
+
+
+    </script>
+
+</body>
+</html>

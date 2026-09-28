@@ -7,6 +7,9 @@ app.use(express.json()) // configura API para usar JSON.
 const fs = require('fs') // importa leitura e escrita de arquivos.
 
 
+const cors = require("cors")
+app.use(cors())
+
 
 
 app.get("/aulas/:Dia",(req,res)=>{
