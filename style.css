@@ -1,10 +1,218 @@
-.aulas{
-    color: antiquewhite;
-    background-color: black;
-    
+
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.button{
-    
-   color: aqua;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #222;
+    min-height: 100vh;
 }
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
+header {
+    background: #111827;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+header::before {
+    content: "Horários Kennedy";
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+main {
+    width: 95%;
+    max-width: 1400px;
+    margin: 40px auto;
+}
+
+
+/* =========================
+   TABELA
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Cabeçalho da tabela */
+
+thead {
+    background-color: #1f2937;
+    color: white;
+}
+
+th {
+    padding: 18px 12px;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+/* Primeira coluna */
+
+tbody tr:first-child td:first-child {
+    background-color: #e5e7eb;
+    color: #374151;
+    font-weight: bold;
+}
+
+
+/* Células */
+
+td {
+    border-right: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+    min-width: 150px;
+}
+
+
+/* =========================
+   HORÁRIOS
+========================= */
+
+td ul {
+    list-style: none;
+}
+
+td:first-child li {
+    padding: 16px 10px;
+    border-bottom: 1px solid #d1d5db;
+}
+
+td:first-child li:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   AULAS
+========================= */
+
+.aulas {
+    background-color: #f9fafb;
+    color: #111827;
+    vertical-align: top;
+    font-weight: 500;
+}
+
+.aulas ul {
+    padding: 0;
+}
+
+.aulas li {
+    padding: 16px 10px;
+    border-bottom: 1px solid #e5e7eb;
+    min-height: 50px;
+}
+
+.aulas li:last-child {
+    border-bottom: none;
+}
+
+.aulas li:hover {
+    background-color: #eef2ff;
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+button {
+    border: none;
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   LINHA DOS BOTÕES
+========================= */
+
+tbody tr:last-child td {
+    padding: 15px 10px;
+    background-color: #f9fafb;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    height: 60px;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 900px) {
+
+    main {
+        width: 100%;
+        margin: 25px 0;
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 850px;
+        border-radius: 0;
+    }
+
+    header {
+        padding: 0 20px;
+    }
+
+    header::before {
+        font-size: 21px;
+    }
+}
+
